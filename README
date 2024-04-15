@@ -1,1 +1,16 @@
 Emotion Recognition:
+
+Baseline method: SVM? NN? LG?, choose two
+numpy? panda? nltk?
+-data preprocessing
+-feature extraction(tf-idf)
+-training
+-hyperparameter tuning
+-evaluation(F-score)
+
+Advanced method: is it preferred to use new techniques?(use BERT for embeddings, make model more edvanced using buildt-in libs)
+or to extend analysis?(for example use BERT to understand the meaning(topic) of the text)
+-feature extraction(BERT)
+-training(use build-in libs)
+-hyperparameter tuning
+-evaluation(F-score)
