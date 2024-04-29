@@ -1,60 +1,40 @@
 import pandas as pd
-import numpy as np
-import re
 from math import log
-from collections import defaultdict
 
 def tokenize(text):
-    translation_table = str.maketrans({c: f' {c} ' if not c.isalnum() else c for c in set(text)})  # creates translation
-    # table(dictionary) with the built-in function maketrans, set(text) makes an unordered collection of unique
-    # elements through set comprehension, a concise way to create sets
-    tokenized_text = text.translate(translation_table)  # uses translation table to add whitespace around special
-    # characters and punctuation
-    return tokenized_text.strip().lower().split()  # split-tokens split on space, lower-tokens made all lowercase,
-    # strip-and leading or trailing whitespaces are removed from string
+    translation_table = str.maketrans({c: f' {c} ' if not c.isalnum() else c for c in set(text)})
+    tokenized_text = text.translate(translation_table)
+    return tokenized_text.strip().lower().split()
 
 def calculate_tfidf(token, document, all_tokens):
-    tf = document.count(token) / len(document) # 1+log(#oftimestokenindoc/total#termsindoc)
-    idf = log(1 + len(tokens) / tokens.count(token)) # log(#ofdocs/#oftimestokenappearsincollection)
-    tfidf = tf * idf
-    return tfidf
+    tf = document.count(token) / len(document)
+    idf = log(1 + len(all_tokens) / all_tokens.count(token))
+    return tf * idf
 
 custom_headers = ['Emotions', 'Text']
 df = pd.read_excel('isear-test.xlsx', skiprows=1, header=None, names=custom_headers)
 
-#extract dict
+# Extract vocabulary
 text = ''.join(df['Text'].astype(str))
-tokens = tokenize(text) #all tokens, including repeating
+tokens = tokenize(text)
 vocab = set(tokens)
-print(vocab)
 
-# Define emotion labels, there are 7 different labels in the data
+# Define emotion labels
 emotion_labels = ['joy', 'anger', 'guilt', 'fear', 'sadness', 'shame', 'disgust']
 
-#make tf-idf sentence representations and output file
-tfidf_dict = defaultdict(dict)
+# Create a list to store TF-IDF representations
+tfidf_rows = []
+
+# Calculate TF-IDF for each row and store it in the list
 for index, row in df.iterrows():
     emotion = row['Emotions']
     text = row['Text']
     tokenized_text = tokenize(text)
-    tfidf_rep = defaultdict(float)
-    for token in set(tokenized_text):
-        tfidf_rep[token] = calculate_tfidf(token, tokenized_text, tokens)
-    tfidf_dict[emotion][index] = tfidf_rep
+    tfidf_rep = {token: calculate_tfidf(token, tokenized_text, tokens) for token in set(tokenized_text)}
+    tfidf_rows.append({'Emotions': emotion, 'Text': tfidf_rep})
 
-# Create a new DataFrame to store TF-IDF representations
-tfidf_df = pd.DataFrame(columns=['Emotions', 'Text'])
-dfs = []
-
-# Populate the DataFrame with TF-IDF representations
-for emotion, text_dict in tfidf_dict.items():
-    for index, tfidf_rep in text_dict.items():
-        temp_df = pd.DataFrame({'Emotions': [emotion], 'Text': [tfidf_rep]})
-        dfs.append(temp_df)
-
-# Concatenate all DataFrames in the list
-tfidf_df = pd.concat(dfs, ignore_index=True)
+# Create DataFrame from the list of TF-IDF representations
+tfidf_df = pd.DataFrame(tfidf_rows)
 
 # Write the DataFrame to a new Excel file
 tfidf_df.to_excel('tfidf_representations.xlsx', index=False)
-
