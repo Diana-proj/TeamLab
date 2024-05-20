@@ -1,20 +1,29 @@
 import pandas as pd # imports pandas lib and assigns it to the alias pd
 # panda is built on top of NumPy, good for structured data, includes DataFrame, series, can help with cleaning data, files of various formats...
 
-custom_headers = ['Emotions', 'Text'] # defines a list of column headers that will be used when loading the excel file
-# reads data from two excel files and compares the corresponding labels to each other
-# skiprow=1 skips the first row, which is a header row
-# providing the names parameter provides the program with column names so they are not inferred from the data
-test_data = pd.read_excel("isear-test.xlsx", skiprows=1, header=None, names=custom_headers)
-predictions = pd.read_excel('isear-test.xlsx', skiprows=1, header=None, names=custom_headers)
+custom_headers = ['Emotions', 'Text'] # defines a list of column headers that will be used when loading the excel test or eval file
 
-labels = test_data['Emotions'] # extracts emotion column from the test data
-predictions = predictions['Emotions'] # extracts emotion column from prediction file
+# 1. Choose either test or eval data to evaluate on:
+test_data = pd.read_excel("isear-test.xlsx", skiprows=1, header=None, names=custom_headers) # retrieves true labels for test file
+#eval_data = pd.read_excel("isear-validation.xlsx", skiprows=1, header=None, names=custom_headers) # true labels for eval file
+
+# 2. Choose predicted label file accordingly:
+pred_data = pd.read_excel("predictions_with_test.xlsx") # retrieve pred labels for test file
+#pred_data = pd.read_excel('dummy_classifier.xlsx', skiprows=1, header=None, names=custom_headers) # retrieve pred labels generated from dummy classifier
+#pred_data = pd.read_excel('isear-val-prediction.xlsx', skiprows=1, header=None, names=custom_headers) # retrieve pred labels from the given pred file
+#pred_data = pd.read_excel("predictions_with_eval.xlsx") # retrieve pred labels on validation set
+
+# 3. Choose test or eval data for true labels:
+#labels = eval_data['Emotions'] # extracts emotion column from the test data
+labels = test_data['Emotions']
+predictions = pred_data['Predicted Emotions'] # extracts emotion column from prediction file
+
+# now run code
 
 # Define emotion labels, there are 7 different labels in the data
 emotion_labels = ['joy', 'anger', 'guilt', 'fear', 'sadness', 'shame', 'disgust']
 
-label_f_scores = {} # initializes a dictionary to score the precision, recall, and F-score for each emotion label
+label_f_scores = {} # initializes a dictionary to store the precision, recall, and F-score for each emotion label
 for emotion in emotion_labels: # loops over each emotion in emotion list
     true_positive = sum(labels.eq(emotion) & predictions.eq(emotion)) #calculates # of TP for current emotion label
     false_positive = sum(labels.ne(emotion) & predictions.eq(emotion))
