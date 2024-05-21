@@ -1,19 +1,44 @@
-Emotion Recognition:
+Our Task: Emotion Recognition
 
-Baseline method: SVM? LG?
-numpy panda but dont use built in F-score
--data preprocessing
--feature extraction(tf-idf)
--training
--hyperparameter tuning
--evaluation script(F-score):
-  -need F-score for labels and whole set
 
-Advanced method: is it preferred to use new techniques?(use BERT for embeddings, make model more edvanced using buildt-in libs)
-or to extend analysis?(for example use BERT to understand the meaning(topic) of the text), 
-could try a different classifier, 
-could try to explain by 1 label predicted better or worse and make it better
--feature extraction(BERT)
--training(use build-in libs)
--hyperparameter tuning
--evaluation(F-score)
+
+Baseline method: Logistic Regression
+
+Data:
+Training Data: isear-train.xlsx
+Testing Data: isear-test.xlsx
+Validation Data: isear-validation.xlsx
+
+Data preprocessing: preprocessing_final.py or preprocessing_final.ipynb
+-this file does feature extraction with log-tf-idf, and LR_final uses variables saved from this file
+
+Model: LR_final.py or LR_final.ipynb
+-trains on training data, 5000 epochs, 0.02 learning rate
+-tests on validation data or test data
+
+Evaluation: evaluation.py
+-compares true labels to predicted labels for 4 different files, the test file, validation file, the dummy classifier file, and the given predicted labels, isear_val_predictions.xlsx
+
+Dummy Classifier for testing evaluation script: dummy_classifier.py or dummy_classifier.ipynb
+-outputs excel file to be used in evaluation script
+
+
+
+
+Advanced method: BiLSTM or Transformer
+
+Data:
+-larger(GoEmotions)
+
+Data Preprocessing:
+-BERT Embeddings
+
+Model:
+-BiLSTM
+-Transformer
+
+Error Analysis:
+-Lime and Shap(how we will decide if larger dataset is necessary)
+
+Evaluation:
+-built-in F-score
