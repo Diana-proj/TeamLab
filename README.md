@@ -1,46 +1,46 @@
-Directions to run code:
+# Directions to run the .py code:
 
-Clone the Repository
+### Clone the Repository
 
-```git clone https://github.com/username/repository.git
-cd repository```
+`git clone https://github.com/username/repository.git
+cd repository`
 
-Create a Virtual Environment:
+### Create a Virtual Environment:
 
-'python -m venv venv'  # or `python3` if you're using Python 3.x
+`python -m venv venv`  # or `python3` if you're using Python 3.x
 
-Activate the Virtual Environment:
+### Activate the Virtual Environment:
 
-Unix/macOS: 'source venv/bin/activate'
+Unix/macOS: `source venv/bin/activate`
 
-On Windows: '.\venv\Scripts\activate'
+On Windows: `.\venv\Scripts\activate`
 
-Install Requirements:
+### Install Requirements:
 
 `pip install -r requirements.txt`
 
+# Directions to run the .pynb code:
 
-Our Task: Emotion Recognition
+# Our Task: Emotion Recognition
 
-Baseline: Logistic Regression
-
-F1 score on Test: 0.583
-F1 score on Dev: 0.582
+## Baseline: Logistic Regression
+- F1 score on Test: 0.583
+- F1 score on Dev: 0.582
 
 Data:
-Training Data: isear-train.xlsx
-Testing Data: isear-test.xlsx
-Validation Data: isear-validation.xlsx
+- Training Data: isear-train.xlsx
+- Testing Data: isear-test.xlsx
+- Validation Data: isear-validation.xlsx
 
 Data preprocessing: preprocessing_final.py or preprocessing_final.ipynb
--this file does feature extraction with log-tf-idf, and LR_final uses variables saved from this file
+- this file does feature extraction with log-tf-idf, and LR_final uses variables saved from this file
 
 Model: LR_final.py or LR_final.ipynb
--trains on training data, 5000 epochs, 0.02 learning rate
--tests on validation data or test data
+- trains on training data, 5000 epochs, 0.02 learning rate
+- tests on validation data or test data
 
 Evaluation: evaluation.py
--compares true labels to predicted labels for 4 different files, the test file, validation file, the dummy classifier file, and the given predicted labels, isear_val_predictions.xlsx
+- compares true labels to predicted labels for 4 different files, the test file, validation file, the dummy classifier file, and the given predicted labels, isear_val_predictions.xlsx
 
 Dummy Classifier for testing evaluation script: dummy_classifier.py or dummy_classifier.ipynb
 -outputs excel file to be used in evaluation script
@@ -48,24 +48,24 @@ Dummy Classifier for testing evaluation script: dummy_classifier.py or dummy_cla
 
 
 
-Advanced Methods: 
+## Advanced Methods: 
 
 Data:
-Training Data: isear-train.xlsx
-Testing Data: isear-test.xlsx
-Validation Data: isear-validation.xlsx
+- Training Data: isear-train.xlsx
+- Testing Data: isear-test.xlsx
+- Validation Data: isear-validation.xlsx
 
 Data Preprocessing:
--experimented with BERT Embeddings
--found RoBERTA embeddings to be better
--tried out TF-IDF for our BiLSTM model
+- experimented with BERT Embeddings
+- found RoBERTA embeddings to be better
+- tried out TF-IDF for our BiLSTM model
 
 FNN:
-F1 score on Test:
-F1 score on Dev:
+- F1 score on Test:
+- F1 score on Dev:
 
 
-BiLSTM:
+BiLSTM: bilstm_final.py and bilstm_tfidf.py
 (RoBERTA Embeddings)
 F1 score on Test: 0.604
 F1 score on Dev: 0.598
@@ -73,16 +73,16 @@ F1 score on Dev: 0.598
 F1 score on Test: 0.604
 F1 score on Dev: 0.598
 
-RoBERTA:
+RoBERTA: 
 F1 score on Test:
 F1 score on Dev:
 
 
 Data Instance Error Analysis:
--looked at which labels are more difficult to predict and what data instances are incorrectly predicted
+- looked at which labels are more difficult to predict and what data instances are incorrectly predicted
 
 Additional Features:
--added additional vocabulary to certain emotions to improve prediction on those emotions that are poorly predicted
+- added additional vocabulary to certain emotions to improve prediction on those emotions that are poorly predicted
 
 Evaluation:
--built-in F1 score
+- built-in F1 score
