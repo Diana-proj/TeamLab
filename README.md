@@ -2,10 +2,15 @@
 
 ### Clone the Repository
 
-`git clone https://github.com/Diana-proj/TeamLab.git
-cd repository`
+Go to terminal, enter the following commands and make sure that you choose a path to clone the repository to.
+
+`git clone https://github.com/Diana-proj/TeamLab.git C:/Users/User/Path`
+
+`cd C:/Users/User/Path`
 
 ### Create a Virtual Environment:
+
+Once the files are downloaded, check to make sure they are in the folder and then run the following commmands.
 
 `python -m venv venv`  # or `python3` if you're using Python 3.x
 
@@ -18,6 +23,8 @@ On Windows: `.\venv\Scripts\activate`
 ### Install Requirements:
 
 `pip install -r requirements.txt`
+
+The environment should be set up, simply open the files you would like to run to get started.
 
 # Directions to run the .pynb code:
 
