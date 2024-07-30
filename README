@@ -1,8 +1,6 @@
 Our Task: Emotion Recognition
 
-
-
-Baseline method: Logistic Regression
+Baseline: Logistic Regression
 
 Data:
 Training Data: isear-train.xlsx
@@ -25,20 +23,41 @@ Dummy Classifier for testing evaluation script: dummy_classifier.py or dummy_cla
 
 
 
-Advanced method: BiLSTM or Transformer
+Advanced Methods: 
 
 Data:
--larger(GoEmotions)
+Training Data: isear-train.xlsx
+Testing Data: isear-test.xlsx
+Validation Data: isear-validation.xlsx
 
 Data Preprocessing:
--BERT Embeddings
+-experimented with BERT Embeddings
+-found RoBERTA embeddings to be better
+-tried out TF-IDF for our BiLSTM model
 
-Model:
--BiLSTM
--Transformer
+FNN:
+F1 score on Test:
+F1 score on Dev:
 
-Error Analysis:
--Lime and Shap(how we will decide if larger dataset is necessary)
+
+BiLSTM:
+(RoBERTA Embeddings)
+F1 score on Test: 0.604
+F1 score on Dev: 0.598
+(TF-IDF vectors)
+F1 score on Test: 0.604
+F1 score on Dev: 0.598
+
+RoBERTA:
+F1 score on Test:
+F1 score on Dev:
+
+
+Data Instance Error Analysis:
+-looked at which labels are more difficult to predict and what data instances are incorrectly predicted
+
+Additional Features:
+-added additional vocabulary to certain emotions to improve prediction on those emotions that are poorly predicted
 
 Evaluation:
--built-in F-score
+-built-in F1 score
