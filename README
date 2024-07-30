@@ -1,6 +1,9 @@
 Directions to run code:
 
-
+### Clone the Repository
+```sh
+git clone https://github.com/username/repository.git
+cd repository
 
 
 Our Task: Emotion Recognition
