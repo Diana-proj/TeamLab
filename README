@@ -2,6 +2,9 @@ Our Task: Emotion Recognition
 
 Baseline: Logistic Regression
 
+F1 score on Test: 0.583
+F1 score on Dev: 0.582
+
 Data:
 Training Data: isear-train.xlsx
 Testing Data: isear-test.xlsx
