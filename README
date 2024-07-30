@@ -2,8 +2,8 @@ Directions to run code:
 
 Clone the Repository
 
-'git clone https://github.com/username/repository.git
-cd repository'
+`git clone https://github.com/username/repository.git
+cd repository`
 
 Create a Virtual Environment:
 
@@ -17,7 +17,7 @@ On Windows: '.\venv\Scripts\activate'
 
 Install Requirements:
 
-'pip install -r requirements.txt'
+`pip install -r requirements.txt`
 
 
 Our Task: Emotion Recognition
