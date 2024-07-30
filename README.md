@@ -2,7 +2,7 @@
 
 ### Clone the Repository
 
-`git clone https://github.com/username/repository.git
+`git clone https://github.com/Diana-proj/TeamLab.git
 cd repository`
 
 ### Create a Virtual Environment:
