@@ -26,8 +26,6 @@ On Windows: `.\venv\Scripts\activate`
 
 The environment should be set up, simply open the files you would like to run to get started. Please see code comments inside file on exactly how to run scripts for specific functions.
 
-# Directions to run the .pynb code:
-
 # Our Task: Emotion Recognition
 
 ## Baseline: Logistic Regression
