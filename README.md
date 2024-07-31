@@ -1,4 +1,4 @@
-# Directions to run the .py code:
+# Directions to run code:
 
 ### Clone the Repository
 
@@ -24,7 +24,7 @@ On Windows: `.\venv\Scripts\activate`
 
 `pip install -r requirements.txt`
 
-The environment should be set up, simply open the files you would like to run to get started.
+The environment should be set up, simply open the files you would like to run to get started. Please see code comments inside file on exactly how to run scripts for specific functions.
 
 # Directions to run the .pynb code:
 
