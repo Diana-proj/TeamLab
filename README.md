@@ -52,7 +52,6 @@ Dummy Classifier for testing evaluation script: dummy_classifier.py or dummy_cla
 
 
 
-
 ## Advanced Methods: 
 
 Data:
@@ -65,11 +64,15 @@ Data Preprocessing:
 - found RoBERTA embeddings to be better
 - tried out TF-IDF for our BiLSTM model
 
-FNN:
-- F1 score on Test:
-- F1 score on Dev:
+FNN: 
+FNN_nospelling_corr.ipynb and FNN_spelling_features.ipynb
+- F1 score on Test: 0.627
+- F1 score on Dev: 0.579
 
-
+Additional Features:
+- added additional vocabulary to certain emotions to improve prediction on those emotions that are poorly predicted
+- spelling corrections
+ 
 BiLSTM: bilstm_final.py and bilstm_tfidf.py
 (RoBERTA Embeddings)
 F1 score on Test: 0.604
@@ -78,16 +81,12 @@ F1 score on Dev: 0.598
 F1 score on Test: 0.604
 F1 score on Dev: 0.598
 
-RoBERTA: 
-F1 score on Test:
-F1 score on Dev:
-
+RoBERTA: TL_RobertaOnly.ipynb
+F1 score on Test: 0.712
+F1 score on Dev: 0.735
 
 Data Instance Error Analysis:
 - looked at which labels are more difficult to predict and what data instances are incorrectly predicted
-
-Additional Features:
-- added additional vocabulary to certain emotions to improve prediction on those emotions that are poorly predicted
 
 Evaluation:
 - built-in F1 score
